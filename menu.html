@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Engineer PDA</title>
+  <style media="screen">
+  body{
+    background-color: black;
+    overflow: hidden;
+  }
+  #header{
+    text-align: center;
+    color: green;
+  }
+  .yellow-box{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-left: 200px;
+  }
+
+  #wrapper{}
+
+    #background-base{
+      position: absolute;
+      z-index: 1;
+      background-image: url("Resources/gui_base.png");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+    }
+
+    #menu-image{
+      position: absolute;
+      z-index: 2;
+      background-image: url("Resources/gui_menu_text.png");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+    }
+
+    #menu_icon1{
+      position: absolute;
+      z-index: 3;
+      background-image: url("Resources/gui_icon_sentry.png");
+      background-repeat: no-repeat;
+      top: 130px;
+      left: 150px;
+      width: 45%;
+      height: 45%;
+      background-size: contain;
+    }
+
+    #menu_icon2{
+      position: absolute;
+      z-index: 3;
+      background-image: url("Resources/gui_icon_taunt.png");
+      background-repeat: no-repeat;
+      top: 130px;
+      left: 425px;
+      width: 45%;
+      height: 45%;
+      background-size: contain;
+    }
+
+    #menu_icon3{
+      position: absolute;
+      z-index: 3;
+      background-image: url("Resources/gui_icon_settings.png");
+      background-repeat: no-repeat;
+      top: 130px;
+      left: 700px;
+      width: 45%;
+      height: 45%;
+      background-size: contain;
+    }
+
+    #text_sentry{
+      position: absolute;
+      z-index: 4;
+      top: 330px;
+      left: 200px;
+      width: 100px;
+      height: 100px;
+      color: white;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    #text_taunt{
+      position: absolute;
+      z-index: 4;
+      top: 330px;
+      left: 480px;
+      width: 100px;
+      height: 100px;
+      color: white;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    #text_settings{
+      position: absolute;
+      z-index: 4;
+      top: 330px;
+      left: 745px;
+      width: 100px;
+      height: 100px;
+      color: white;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    #button_1{
+      position: absolute;
+      z-index: 5;
+      background-image: url("Resources/gui_button.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 370px;
+      left: 230px;
+      width: 10%;
+      height: 10%;
+    }
+
+    #button_2{
+      position: absolute;
+      z-index: 5;
+      background-image: url("Resources/gui_button.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 370px;
+      left: 505px;
+      width: 10%;
+      height: 10%;
+    }
+
+    #button_3{
+      position: absolute;
+      z-index: 5;
+      background-image: url("Resources/gui_button.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: 370px;
+      left: 790px;
+      width: 10%;
+      height: 10%;
+    }
+
+    #buttontxt_1{
+      position: absolute;
+      z-index: 6;
+      top: 375px;
+      left: 250px;
+      width: 100px;
+      height: 100px;
+      color: black;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    #buttontxt_1{
+      position: absolute;
+      z-index: 6;
+      top: 375px;
+      left: 250px;
+      width: 100px;
+      height: 100px;
+      color: black;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    #buttontxt_1{
+      position: absolute;
+      z-index: 6;
+      top: 375px;
+      left: 250px;
+      width: 100px;
+      height: 100px;
+      color: black;
+      font-family: TF2;
+      font-size: 35px;
+    }
+    #buttontxt_2{
+      position: absolute;
+      z-index: 6;
+      top: 375px;
+      left: 520px;
+      width: 100px;
+      height: 100px;
+      color: black;
+      font-family: TF2;
+      font-size: 35px;
+    }
+    #buttontxt_3{
+      position: absolute;
+      z-index: 6;
+      top: 375px;
+      left: 805px;
+      width: 100px;
+      height: 100px;
+      color: black;
+      font-family: TF2;
+      font-size: 35px;
+    }
+
+    </style>
+    <script type="text/javascript">
+
+  const {ipcRenderer} = require('electron')
+
+    function make_noise1(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+      ipcRenderer.send('change page', 'build.html')
+    }
+    function make_noise2(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+      ipcRenderer.send('change page', 'taunt.html')
+    }
+    function make_noise3(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+      ipcRenderer.send('change page', 'settings.html')
+    }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <div id="background-base"></div>
+      <div id="menu-image"></div>
+      <div onclick="make_noise1()" id="menu_icon1"></div>
+      <div onclick="make_noise2()" id="menu_icon2"></div>
+      <div onclick="make_noise3()" id="menu_icon3"></div>
+      <audio id="music_player" autoplay></audio>
+      <div id="text_sentry">Sentry</div>
+      <div id="text_taunt">Taunt</div>
+      <div id="text_settings">Settings</div>
+      <div id="button_1"></div>
+      <div id="button_2"></div>
+      <div id="button_3"></div>
+      <div id="buttontxt_1">1</div>
+      <div id="buttontxt_2">2</div>
+      <div id="buttontxt_3">3</div>
+    </div>
+
+  </body>
+
+  </html>

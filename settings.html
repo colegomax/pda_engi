@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Engineer PDA</title>
+  <style media="screen">
+  body{
+    background-color: black;
+    overflow: hidden;
+  }
+  #header{
+    text-align: center;
+    color: green;
+  }
+  .yellow-box{
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-left: 200px;
+  }
+
+  #wrapper{}
+
+    #background-base{
+      position: absolute;
+      z-index: 1;
+      background-image: url("Resources/gui_base.png");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+    }
+
+    #menu-image{
+      position: absolute;
+      z-index: 2;
+      background-image: url("Resources/gui_settings_text.png");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+    }
+
+    #button_back{
+      position: absolute;
+      z-index: 4;
+      top: 370px;
+      left: 40px;
+      width: 100px;
+      height: 100px;
+      color: white;
+      font-family: TF2;
+      cursor: pointer;
+      font-size: 35px;
+    }
+
+    #text_settings{
+      position: absolute;
+      z-index: 5;
+      top: 200px;
+      left: 150px;
+      width: 800px;
+      height: 100px;
+      color: white;
+      font-family: TF2;
+      font-size: 50px;
+    }
+
+    </style>
+    <script type="text/javascript">
+
+  const {ipcRenderer} = require('electron')
+
+    function make_noise1(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+      ipcRenderer.send('change page', 'build.html')
+    }
+    function make_noise2(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+      ipcRenderer.send('change page', 'taunt.html')
+    }
+    function make_noise3(){
+      const music_player = document.getElementById('music_player');
+      music_player.src = "Resources/buttonclick.wav"
+    }
+
+    function go_home(){
+      ipcRenderer.send('change page', 'menu.html')
+    }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="wrapper">
+      <div id="background-base"></div>
+      <div id="menu-image"></div>
+      <div onclick="make_noise1()" id="menu_icon1"></div>
+      <div onclick="make_noise2()" id="menu_icon2"></div>
+      <div onclick="make_noise3()" id="menu_icon3"></div>
+      <audio id="music_player" autoplay></audio>
+      <a onclick="go_home()" id="button_back"><< Back</a>
+      <div id="text_settings">PRETEND THIS IS A SETTINGS SCREEN</div>
+    </div>
+
+  </body>
+
+  </html>
